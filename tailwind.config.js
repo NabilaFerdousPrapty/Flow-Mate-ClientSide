@@ -5,19 +5,14 @@ export default {
   theme: {
     screens: {
       sm: "640px",
-      // => @media (min-width: 640px) { ... }
 
       md: "768px",
-      // => @media (min-width: 768px) { ... }
 
       lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
 
       xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
 
       "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
     },
     extend: {
       borderRadius: {
@@ -68,6 +63,14 @@ export default {
         },
       },
       keyframes: {
+        shine: {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -98,6 +101,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        shine: "shine var(--duration) infinite linear",
       },
     },
   },

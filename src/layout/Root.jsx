@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../Firebase/Firebase.config";
 import { clearUser, setLoading, setUser } from "../redux/slices/authSlice";
+import Navbar from "@/Shared/Navbar";
 
 const Root = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,14 @@ const Root = () => {
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        dispatch(setUser({
-          uid: currentUser.uid,
-          email: currentUser.email,
-          displayName: currentUser.displayName,
-          photoURL: currentUser.photoURL,
-        }));
+        dispatch(
+          setUser({
+            uid: currentUser.uid,
+            email: currentUser.email,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          })
+        );
       } else {
         dispatch(clearUser());
       }
@@ -44,9 +47,10 @@ const Root = () => {
 
   return (
     <div className="h-screen">
-      <Hero/>
+      {/* <Hero/> */}
+      <Navbar />
       <Outlet />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
