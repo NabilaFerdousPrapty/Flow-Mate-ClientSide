@@ -4,6 +4,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import MainButton from "./MainButton";
 import Container from "@/components/Container";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const links = [
@@ -80,7 +81,10 @@ function Navbar() {
       >
         <div className="flex justify-between mx-[10px]">
           <div className="flex gap-[50px] text-[16px] items-center select-none">
-            <img src="/images/logo.svg" alt="logo" />
+            <Link to={"/"}>
+              {" "}
+              <h1 className="text-xl font-bold">FlowMate</h1>
+            </Link>
           </div>
           <div className="flex items-center gap-[40px]">
             {menu ? (
@@ -90,7 +94,7 @@ function Navbar() {
               />
             ) : (
               <img
-                src="/images/menu.svg"
+                src="../../public/logo/nenu.svg"
                 alt="logo"
                 className="cursor-pointer animate-in fade-in zoom-in"
                 onClick={toggleMenu}
