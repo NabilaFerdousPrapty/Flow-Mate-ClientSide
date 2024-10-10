@@ -17,7 +17,7 @@ import TeamCreate from "@/components/dashBoardRoutes/teamCreate/TeamCreate";
 import TaskCard from "@/components/dashBoardRoutes/tasks/TaskCard";
 import UpdateTask from "@/components/dashBoardRoutes/tasks/UpdateTask";
 import TeamRequest from "@/components/dashBoardRoutes/teamRequest/TeamRequest";
-import AdminDashboard from "@/components/Admin/AdminDashboard/AdminDashboard";
+import AdminDashboard from "@/components/admin/adminDashboard/AdminDashboard";
 
 
 

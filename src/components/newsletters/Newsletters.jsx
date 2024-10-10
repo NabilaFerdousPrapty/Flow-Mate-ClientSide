@@ -51,8 +51,13 @@ const Newsletters = () => {
   };
   
   return (
+
+    <div id="subscribe" className=" lg:max-w-7xl mx-auto ">
+      <div className="mx-auto max-w-3xl text-center pt-12 pb-12 md:pb-20">
+
     <div id="subscribe" className=" lg:max-w-7xl mx-auto my-1 py-3">
       <div className="mx-auto max-w-3xl text-center pb-12 md:pb-20">
+
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">
           Stay Connected <span className="text-blue-500">FlowMate</span>
         </h1>
