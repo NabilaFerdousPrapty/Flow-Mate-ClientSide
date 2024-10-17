@@ -7,7 +7,7 @@ function HeroHeaderSection() {
         <div className="text-white inline-block bg-primary p-2 rounded-[100px] text-[10px] font-semibold">
           New
         </div>
-        <p className="text-[#31373D]">
+        <p className="text-[#31373D] sm:line-clamp-1">
           FlowMate is a powerful and easy-to-use platform that helps teams
           collaborate seamlessly.
         </p>
