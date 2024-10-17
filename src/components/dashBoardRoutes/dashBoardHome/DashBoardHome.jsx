@@ -5,7 +5,7 @@ import DashBoardChart from "./dashBoardChart/DashBoardChart";
 import CommonButton from "@/components/commonButton/CommonButton";
 import ProjectCreate from "@/components/projectCreate/ProjectCreate";
 import DashBoardCards from "../dashBoardCards/DashBoardCards";
-import VisitorInsightsChart from "../visitorInsightsChart/VisitorInsightsChart";
+// import VisitorInsightsChart from "../visitorInsightsChart/VisitorInsightsChart";
 import { MdDashboard, MdMenu, MdClose } from "react-icons/md";
 // import DashBoardLoginUser from "../dashBoardLoginUser/DashBoardLoginUser";
 // import DashBoardPaidUser from "../dashBoardPaidUser/DashBoardPaidUser";
@@ -16,6 +16,8 @@ import BoardSystem from "./boardSystem/BoardSystem";
 import UseAdmin from "@/hooks/UseAdmin";
 import Dropdown from "@/components/dropdown/Dropdown";
 import PageHeader from "@/components/pageHeader/PageHeader";
+import ActivityChart from "./Recharts/ActivityChart";
+import SupportiveCard from "./SuuportiveCard";
 
 const DashBoardHome = () => {
   const dispatch = useDispatch();
@@ -133,27 +135,18 @@ const DashBoardHome = () => {
         </div>
       </div>
 
-      {/* <div className=" mx-10 my-10">
-        <BoardSystem />
-      </div> */}
-      {/* <div className="lg:flex lg:justify-evenly mx-auto flex-1">
-        <DashBoardLoginUser />
-        <DashBoardSubscriptionUser />
-        <DashBoardPaidUser />
-      </div> */}
-
-      {/* User Stats */}
-      <div className="lg:flex lg:justify-evenly mx-auto flex-1"></div>
-
+   
       {/* Charts and Graphs */}
       <div className="flex lg:flex-row flex-col justify-between mx-14 my-10 gap-6">
         {/* Visitor Insights Chart */}
-        <div className="flex-1 bg-white rounded-2xl">
-          <VisitorInsightsChart />
+        <div className="w-2/3 bg-white rounded-2xl">
+          <ActivityChart/>
         </div>
 
         {/* Round Graph */}
-        <div className="bg-white rounded-2xl h-96 p-10"></div>
+        <div className="  w-1/3  ">
+          <SupportiveCard/>
+        </div>
       </div>
     </div>
 
