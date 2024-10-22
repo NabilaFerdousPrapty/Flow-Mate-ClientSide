@@ -30,6 +30,7 @@ import AllTeam from "@/components/dashBoardRoutes/dashBoardHome/allTeam/AllTeam"
 import TeamTask from "@/components/dashBoardRoutes/dashBoardHome/teamTask/TeamTask";
 import MyTask from "@/components/dashBoardRoutes/dashBoardHome/myTaskk/MyTask";
 import TodoList from "@/components/dashBoardRoutes/tasks/TodoList";
+import CalendarView from "@/components/dashBoardRoutes/dashBoardHome/teamTask/CalendarView";
 
 export const router = createBrowserRouter([
   {
@@ -110,25 +111,20 @@ export const router = createBrowserRouter([
         path: "taskDetails/:id",
         element: <TaskDetails />,
         loader: ({ params }) =>
-          fetch(
-            `http://localhost:5000/createTask/${params.id}`
-          ),
+          fetch(`http://localhost:5000/createTask/${params.id}`),
       },
-     
-        {
+
+      {
         path: "taskCard",
         element: <TaskCard />,
-        
       },
       {
         path: "updateTask/:id",
         element: <UpdateTask />,
         loader: ({ params }) =>
-          fetch(
-            `${import.meta.env.VITE_API_URL}/createTask/${params.id}`
-          ),
+          fetch(`${import.meta.env.VITE_API_URL}/createTask/${params.id}`),
       },
-    
+
       {
         path: "payment_history",
         element: <PaymentHistory />,
@@ -162,7 +158,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "all-team",
-        element: <AllTeam/>,
+        element: <AllTeam />,
       },
       {
         path: "teamTask/:teamName",
@@ -170,6 +166,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/team/${params.teamName}`),
       },
+      // {
+      //   path: "/teamTask/:teamName",
+      //   element: <CalendarView />,
+      // },
       // {
       //   path: "my-task",
       //   element: <MyTask />,
@@ -179,7 +179,7 @@ export const router = createBrowserRouter([
         element: <TodoList />,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/team/${params.teamName}`),
-      }
+      },
     ],
   },
 
