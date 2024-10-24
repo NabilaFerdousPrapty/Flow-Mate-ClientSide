@@ -14,28 +14,23 @@ const DashBoardCards = () => {
   const axiosCommon = UseAxiosCommon();
   const userEmail = useSelector((state) => state.auth.user?.email);
 
-  const [error, setError] = useState(null);
-  console.log(error)
 
 
   // Fetching paid user data
   const {
-    data: task = [],
+    data: task = [], // Default to an empty array
     isLoading,
     isError,
+
   } = useQuery({
     queryKey: ["task"],
-
     queryFn: async () => {
-      const res = await axiosCommon.get("/createTask");
-      console.log(res)
-      return res.data;
-    },
-
-    onError: (error) => {
-      setError(error.message);
+      const { data } = await axiosCommon.get(`/createTask/task-count/${userEmail}`);
+      console.log(data)
+      return data;
     },
   });
+
 
   // Handle loading state
   if (isLoading) {
@@ -51,67 +46,38 @@ const DashBoardCards = () => {
     navigate(path); // Navigate to the respective page when a card is clicked
   };
 
-  const filteredTodos = task.filter(
-    (todo) => todo.stage === "todo" && todo.email === userEmail // Adjust the filter condition
-  );
+
 
   return (
 
     <div>
-      <div className="lg:flex lg:justify-between gap-6 pb-10">
-        {task[0] && (
-          <div className="flex flex-col lg:flex-row lg:w-full lg:justify-between bg-white hover:shadow-md rounded-lg overflow-hidden shadow-lg">
-            <div
-              onClick={() => handleCardClick(task[0].navigateTo)}
-              className="lg:ml-8 cursor-pointer text-black p-4 lg:p-6 w-full lg:w-1/2 flex flex-col items-center lg:items-start hover:scale-105 transform transition-transform duration-300"
-            >
-              <div className="text-sm lg:text-base mb-4 lg:mb-6 font-semibold text-gray-600 text-center lg:text-left">
-                des:{task[1].assignedTo}
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-2 lg:mb-4 text-center lg:text-left">
-                {task.length}
-              </h2>
-              <p className="text-lg lg:text-xl text-center lg:text-left">
-                {task[0].title}
-              </p>
-            </div>
-            <div className="flex justify-center lg:justify-end">
-              <img
-                className="h-40 lg:h-60 w-80 lg:w-96 object-contain"
-                src={line}
-                alt=""
-              />
-            </div>
-            <p>hello</p>
-          </div>
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 px-4 py-8">
+        {/* All Tasks Card */}
+        <div className="bg-blue-500 text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 className="text-lg font-semibold">All Tasks</h3>
+          <p className="text-4xl mt-4">{task.totalTasks}</p>
+        </div>
+
+        {/* Completed Tasks Card */}
+        <div className="bg-green-500 text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 className="text-lg font-semibold">Completed Tasks</h3>
+          <p className="text-4xl mt-4">{task.done}</p>
+        </div>
+
+        {/* In Progress Tasks Card */}
+        <div className="bg-yellow-500 text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 className="text-lg font-semibold">In Progress Tasks</h3>
+          <p className="text-4xl mt-4">{task.inProgress}</p>
+        </div>
+
+        {/* To-do Tasks Card */}
+        <div className="bg-red-500 text-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <h3 className="text-lg font-semibold">To-do Tasks</h3>
+          <p className="text-4xl mt-4">{task.todo}</p>
+        </div>
       </div>
 
 
-
-      {/* show 3 data */}
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-6">
-        {task.slice(-3).map((task, index) => (
-          <div
-            key={index}
-            onClick={() => handleCardClick(task.navigateTo)}
-            className={`cursor-pointer ${task.color} text-black rounded-lg shadow-lg p-4 lg:p-6 w-full lg:w-[276px] flex flex-col items-center lg:items-start hover:scale-105 transform transition-transform duration-300 hover:shadow-gray-200`}
-          >
-            <div className="text-sm mx-auto lg:text-base mb-4 lg:mb-6 font-bold text-gray-600 text-center lg:text-left">
-              Name: {filteredTodos.assignedTo}
-            </div>
-            <p className="text-lg lg:text-xl text-center mx-auto lg:text-left">
-              {filteredTodos.teamName}
-            </p>
-            <p className="text-lg lg:text-xl text-center mx-auto lg:text-left">
-              {filteredTodos.stage}
-            </p>
-            <h2 className="mx-auto text-4xl lg:text-5xl font-bold mb-2 lg:mb-4 text-center lg:text-left">
-              {filteredTodos.length}
-            </h2>
-          </div>
-        ))}
-      </div>
 
 
 
