@@ -1,0 +1,32 @@
+/* Styling for the logo container */
+.logo-container {
+  color: #33333369;
+  background-color: #fff;
+
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.logo-container:hover {
+  color: aqua;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Styling for the logo image */
+.logo-image {
+  max-width: 100px; /* Ensure consistent sizing of logos */
+  filter: grayscale(100%); /* Start with grayscale */
+  transition: filter 0.3s ease, transform 0.3s ease; /* Add smooth transitions */
+}
+
+.logo-image:hover {
+  filter: grayscale(0%); /* Remove grayscale on hover */
+  transform: scale(1.1); /* Slightly enlarge logo on hover */
+}

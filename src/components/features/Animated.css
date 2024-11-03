@@ -1,0 +1,26 @@
+@keyframes rotate-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-rotate-circle {
+    animation: rotate-circle 20s linear infinite;
+  }
+  
+  .counter-rotate {
+    animation: rotate-item 20s linear infinite;
+  }
+  
+  @keyframes rotate-item {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
